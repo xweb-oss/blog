@@ -1,0 +1,24 @@
+{
+  "name": "my-blog",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "authors": {
+    "name": "xweb",
+    "email": "1064997913@qq.com"
+  },
+  "repository": "/my-blog",
+  "scripts": {
+    "dev": "vuepress dev blog",
+    "build": "vuepress build blog",
+    "deploy": "bash deploy.sh"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.0.0-rc.1",
+    "@vuepress/theme-blog": "^1.2.3",
+    "vuepress": "^1.0.0",
+    "vuepress-plugin-reading-progress": "^1.0.7",
+    "vuepress-plugin-smooth-scroll": "^0.0.3"
+  }
+}
