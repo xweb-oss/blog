@@ -1,6 +1,6 @@
 module.exports = {
   base:'/',
-  title: '嗯哼Blog',
+  title: '汪先生的前端之路',
   description: 'This is a blog example built by VuePress',
   head: [ // 注入到当前页面的 HTML <head> 中的标签
     ['link', { rel: 'icon', href: '../img/xxx.jpg' }], // 增加一个自定义的 favicon(网页标签的图标)
@@ -9,16 +9,20 @@ module.exports = {
   theme: '@vuepress/theme-blog', // OR shortcut: @vuepress/blog
   themeConfig: {
     nav: [
+     
       {
         text: 'Blog',
-        link: '/2019/09/05/posts/',       // 默认走_posts文件夹
+        link: '/2019/09/03/posts/',       // 默认走_posts文件夹
         items: [
           // 默认生成右测边栏 
         ],
       },
       {
-        text: '前端基础',
+        text: 'Main',
         link: '/photography/',   // 走_photography文件夹 ，，自己新建
+        items: [
+          // 默认生成右测边栏 
+        ],
       },
       {
         text: '关于',
