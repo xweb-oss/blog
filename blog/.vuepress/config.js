@@ -1,5 +1,5 @@
 module.exports = {
-  base:'/',
+  base: '/',
   title: '汪先生的前端之路',
   description: 'This is a blog example built by VuePress',
   head: [ // 注入到当前页面的 HTML <head> 中的标签
@@ -9,7 +9,7 @@ module.exports = {
   theme: '@vuepress/theme-blog', // OR shortcut: @vuepress/blog
   themeConfig: {
     nav: [
-     
+
       {
         text: 'Blog',
         link: '/2019/09/03/posts/',       // 默认走_posts文件夹
@@ -38,7 +38,7 @@ module.exports = {
       }
     ],
     sidebar: {
-      '/android/': ["","android1"],
+      '/android/': ["", "android1"],
     },
     footer: {
       contact: [
@@ -62,14 +62,14 @@ module.exports = {
         },
       ],
     },
-    modifyBlogPluginOptions(blogPluginOptions) { 
-      const classify = ['photography','about']
-      classify.map(function(item){
-       let photographyDirectoryClassifier = {
+    modifyBlogPluginOptions(blogPluginOptions) {
+      const classify = ['photography', 'about']
+      classify.map(function (item) {
+        let photographyDirectoryClassifier = {
           id: item,
-          dirname: '_'+item,
-          path: '/'+item+'/',
-          itemPermalink: '/'+item+'/'+':year/:month/:day/:slug',
+          dirname: '_' + item,
+          path: '/' + item + '/',
+          itemPermalink: '/' + item + '/' + ':year/:month/:day/:slug',
           pagination: {
             lengthPerPage: 5,
           },
@@ -78,12 +78,21 @@ module.exports = {
       })
       return blogPluginOptions;
     },
+    pwa: {
+      iconPaths: {
+        favicon32: './favicon.ico',
+        favicon16: './favicon.ico',
+        appleTouchIcon: './favicon.ico',
+        maskIcon: './favicon.ico',
+        msTileImage: './favicon.ico'
+      }
+    }
   },
   plugins: [
     '@vuepress/back-to-top',           // 顶部插件
 
-    
+
     ['vuepress-plugin-smooth-scroll'],
     ['vuepress-plugin-reading-progress'],
-  ]
+  ],
 }
