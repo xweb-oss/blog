@@ -12,10 +12,6 @@ module.exports = {
   theme: '@vuepress/theme-blog', // OR shortcut: @vuepress/blog
   themeConfig: {
     nav: [
-      // {
-      //   text:'HOME',
-      //   link:'/'
-      // },
       {
         text: 'Blog',
         link: '/2019/09/03/posts/',       // 默认走_posts文件夹
