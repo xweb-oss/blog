@@ -47,8 +47,6 @@ var re = pathToRegexp('/foo/:bar');     // 匹配规则
 var match1 = re.exec('/test/route');    // url 路径
 var match2 = re.exec('/foo/route');     // url 路径
 
-console.log(match1);
-console.log(match2);
 ```
 打印结果如下：
 ```

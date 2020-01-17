@@ -15,16 +15,10 @@ module.exports = {
       {
         text: 'Blog',
         link: '/2019/09/03/posts/',       // 默认走_posts文件夹
-        items: [
-          // 默认生成右测边栏 
-        ],
       },
       {
         text: 'Main',
         link: '/photography/',   // 走_photography文件夹 ，，自己新建
-        items: [
-          // 默认生成右测边栏 
-        ],
       },
       {
         text: '关于',
@@ -60,7 +54,7 @@ module.exports = {
       ],
     },
     modifyBlogPluginOptions(blogPluginOptions) {
-      const classify = ['photography', 'about','posts']
+      const classify = ['photography','about','posts']
       classify.map(function (item) {
         let photographyDirectoryClassifier = {
           id: item,
@@ -86,9 +80,6 @@ module.exports = {
     }
   },
   plugins: [
-    '@vuepress/pwa',{
-
-    },
     '@vuepress/back-to-top',           // 顶部插件
     ['vuepress-plugin-smooth-scroll'],
     ['vuepress-plugin-reading-progress'],

@@ -26,7 +26,6 @@ yarn && yarn dev
 
 ## 项目结构
 ```
-.
 ├── README.md
 ├── blog
 │   └── _posts
