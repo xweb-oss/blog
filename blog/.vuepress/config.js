@@ -1,15 +1,21 @@
 module.exports = {
   base: '/',
-  title: '汪先生的前端之路',
-  description: 'This is a blog example built by VuePress',
+  title: '前端之路',
+  description: '技术越好,脾气越小。人丑事多',
   head: [ // 注入到当前页面的 HTML <head> 中的标签
     ['link', { rel: 'icon', href: '../img/xxx.jpg' }], // 增加一个自定义的 favicon(网页标签的图标)
+    ["link", { rel: "manifest", href: "/manifest.json" }],
+    // 更多配置可以参考 https://github.com/vuejs/vuepress/blob/master/packages/docs/docs/.vuepress/config.js
+    ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }]
   ],
 
   theme: '@vuepress/theme-blog', // OR shortcut: @vuepress/blog
   themeConfig: {
     nav: [
-
+      // {
+      //   text:'HOME',
+      //   link:'/'
+      // },
       {
         text: 'Blog',
         link: '/2019/09/03/posts/',       // 默认走_posts文件夹
@@ -53,17 +59,12 @@ module.exports = {
       ],
       copyright: [
         {
-          text: '生命不息 , 马杀鸡不停',
-          link: '',
-        },
-        {
-          text: '人不狠,成不了大事',
-          link: '',
+          text: '经不住流年似水，逃不过此间少年',
         },
       ],
     },
     modifyBlogPluginOptions(blogPluginOptions) {
-      const classify = ['photography', 'about']
+      const classify = ['photography', 'about','posts']
       classify.map(function (item) {
         let photographyDirectoryClassifier = {
           id: item,
@@ -89,9 +90,10 @@ module.exports = {
     }
   },
   plugins: [
+    '@vuepress/pwa',{
+
+    },
     '@vuepress/back-to-top',           // 顶部插件
-
-
     ['vuepress-plugin-smooth-scroll'],
     ['vuepress-plugin-reading-progress'],
   ],
