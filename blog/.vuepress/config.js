@@ -21,8 +21,16 @@ module.exports = {
         link: '/photography/',   // 走_photography文件夹 ，，自己新建
       },
       {
-        text: '关于',
-        link: '/about/2019/09/04/about/',   // 走about文件夹 ，，自己新建
+        text: 'React',
+        link: '/react/',   // 走about文件夹 ，，自己新建
+      },
+      {
+        text: 'JavaScript',
+        link: '/javaScript/',   // 走about文件夹 ，，自己新建
+      },
+      {
+        text: 'Vue',
+        link: '/vue/',   // 走about文件夹 ，，自己新建
       },
       {
         text: 'Github',
@@ -54,7 +62,7 @@ module.exports = {
       ],
     },
     modifyBlogPluginOptions(blogPluginOptions) {
-      const classify = ['photography','about','posts']
+      const classify = ['photography','vue','posts','javaScript','react']
       classify.map(function (item) {
         let photographyDirectoryClassifier = {
           id: item,
