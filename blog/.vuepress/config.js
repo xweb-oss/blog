@@ -70,22 +70,13 @@ module.exports = {
           path: '/' + item + '/',
           itemPermalink: '/' + item + '/' + ':year/:month/:day/:slug',
           pagination: {
-            lengthPerPage: 5,
+            lengthPerPage: 10,
           },
         }
         blogPluginOptions.directories.push(photographyDirectoryClassifier)
       })
       return blogPluginOptions;
     },
-    pwa: {
-      iconPaths: {
-        favicon32: './favicon.ico',
-        favicon16: './favicon.ico',
-        appleTouchIcon: './favicon.ico',
-        maskIcon: './favicon.ico',
-        msTileImage: './favicon.ico'
-      }
-    }
   },
   plugins: [
     '@vuepress/back-to-top',           // 顶部插件
