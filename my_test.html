@@ -67,6 +67,16 @@
   }
   A.describe() // "姓名：张三"
   B.describe() // "姓名：李四"
+
+
+  //  promise 一般有二个状态 a.为完成  b.失败  c.成功      执行得过程一般只有二种  a ------ b       a -------- c
+  function timeout(ms){
+    return new promise ((resolve,reject)=>{
+      setTimeout(resolve,ms,'done')
+    })
+  }
+  // 上面代码中，timeout(100)返回一个 Promise 实例。100毫秒以后，该实例的状态会变为fulfilled。
+  timeout(100)
   </script>
 </body>
 </html>
