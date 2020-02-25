@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=yes" name="format-detection">
+		<meta content="email=yes" name="format-detection">
+		<title>手机端750设计稿开发测试</title>
+		<link rel="stylesheet" type="text/css" href="static/css/style.css"/>
+	</head>
+	<body>
+		<div class="ContainerWarp" id="ContainerWarp">
+			<header class="header">
+				<h2>北京PK10</h2>
+				<div><img src="./static/img/icon_enter.png" alt=""></div>
+			</header>
+			<div class="ty_body">
+				<ul class="ul">
+					<li v-for="item in ['1','2','3','4','5','6']">
+						<div class="title">第<span>045</span>期&nbsp;<span>2019-04-20</span></div>
+						<div class="numlist">
+							<div v-for="item in numList" :key="item.id" :style="{background:item.color}">{{item.num}}</div>
+							<div><img src="./static/img/icon_enter.png" alt=""></div>
+						</div>
+						<div class="opationList">
+							<div v-for="item in opationList">{{item.opation}}</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script src="static/js/baseForphone750.v20190523.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://unpkg.com/vue@2.6.10/dist/vue.min.js"></script>
+		<script src="static/js/index.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

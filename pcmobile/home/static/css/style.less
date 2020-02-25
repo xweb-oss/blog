@@ -1,0 +1,291 @@
+//定义一个变量
+@bfnontSize: 100;/*基于视觉稿横屏尺寸/100得出的基准font-size,750设计稿@bfnontSize为100  引入js为baseForphone750.v20190523.min.js*/ 
+@bfn: @bfnontSize * 1rem;
+.px2rem(@name, @px){
+    @{name}: @px / @bfnontSize * 1rem;
+}
+
+/*定义样式名称*/
+@fontSize:font-size;
+@W:width;
+@H:height;
+@LH:line-height; 
+
+// *{ padding: 0; margin: 0;}
+/*定义padding*/
+.padding(@tp:0, @rt:0, @bt:0, @lt:0){
+    padding-top: @tp / @bfnontSize * 1rem;
+    padding-right: @rt / @bfnontSize * 1rem;
+    padding-bottom: @bt / @bfnontSize * 1rem;
+    padding-left: @lt / @bfnontSize * 1rem; 
+}
+.margin(@tp:0, @rt:0, @bt:0, @lt:0){
+    margin-top: @tp / @bfnontSize * 1rem;
+    margin-right: @rt / @bfnontSize * 1rem;
+    margin-bottom: @bt / @bfnontSize * 1rem;
+    margin-left: @lt / @bfnontSize * 1rem; 
+}
+
+
+*{ 
+    margin: 0; 
+    padding: 0;
+    font-family: PingFang-SC-Medium;
+    font-size: 24/@bfn;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    text-decoration: none;
+    list-style: none;
+    text-decoration: none;
+}
+
+@Rules:{
+    content: "";
+    position: absolute;
+    height:2/@bfn;
+    width:60/@bfn;
+    top:50%;
+    background-color: hsla(0,0%,100%,.4);
+};
+// 使用vertical-align: middle;父元素上必须使用line-height
+body,html{
+    width:100%;
+    height:1005;
+    background:#000;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.app{
+    .header{
+        height:90/@bfn;
+        display:flex;
+        justify-content: space-between;
+        background-image: linear-gradient(180deg, #1d1e23 0%,  #16171b 100%), 
+        linear-gradient( #6face2,  #6face2);
+        div{
+            line-height:90/@bfn;
+            text-align: center;
+        }
+        .left{
+            width:10%;
+            img{
+                width: 38/@bfn;
+                height: 51/@bfn;
+            }
+        }
+        .logo{
+            width:69%;
+            text-align: left;
+            img{
+                width:257/@bfn;
+                height:60/@bfn;
+            }
+        }
+    }
+    aside{
+        img{
+            width: 100%;
+            height: 304/@bfn;
+        }
+    }
+
+    .bigmao{
+        margin:3px 5px;
+    }
+    nav{
+        padding:5/@bfn;
+        div{
+            margin:0 auto;
+            // width: 710/@bfn;
+            height: 58/@bfn;
+            background-color: #2c2e35;
+            border-radius: 29/@bfn;
+            // text-align: center;
+            text-indent: 16/@bfn;
+            line-height: 58/@bfn;
+          
+            img{
+                width:30/@bfn;
+                height:30/@bfn;
+            }
+            span{
+                color: #999999;
+            }
+        }
+
+      
+    }
+    .middle{
+        margin:0 auto;
+        // width: 718/@bfn;
+        height: 218/@bfn;
+        background-color: #2c2e36;
+        border-radius: 20/@bfn;
+        .d-device{
+            color: #999999;
+            background:url('../img/divider-line.png');
+            white-space: nowrap;
+            height: auto;
+            overflow: hidden;
+            text-align: center;
+            padding: 2.667vw 0;
+            font-size: 3.733vw;
+            position: relative;
+            background-repeat: no-repeat;
+            background-position: left 0 top 50%;
+            background-size: contain;
+        }
+       
+    }
+    .middle,.ty-body{
+        ul{
+            display:flex;
+            justify-content: flex-start;
+            text-align: center;
+            flex-wrap: wrap;
+            li{
+                width:25%;
+                height:180/@bfn;
+                img{
+                    width: 82/@bfn;
+                    height: 82/@bfn;
+                }
+                p{
+                    height:50/@bfn;
+                    line-height: 50/@bfn;
+                    color: #fdf8f8;
+                }
+                .p{
+                    height:30/@bfn;
+                    line-height: 30/@bfn;
+                    font-size:14/@bfn;
+                    color: #999999;
+                }
+            }
+        }
+    }
+    .ty-body{
+        margin:5/@bfn 0;
+        background-color: #2c2e36;
+        border-radius: 10/@bfn 10/@bfn 0 0;
+        div{
+            height:80/@bfn;
+            font-size: 28/@bfn;
+            line-height: 60/@bfn;
+            color: #ffffff;
+            text-indent: 16/@bfn;
+        }
+    }
+    .isshawed{
+        position:fixed;
+        left:0;
+        top:0;
+        right:0;
+        bottom:0;
+        background: rgba(0,0,0,.6);
+    }
+    .obscuration{
+        // 底层红包图
+        width:400/@bfn;
+        height:500/@bfn;
+        position: absolute;
+        top:50%;
+        left:50%;
+        margin-top:-250/@bfn;
+        margin-left:-200/@bfn;
+        // z-index:1000;
+        background:url('../img/activity-redpacket.png') no-repeat center;
+        background-size: cover; 
+        .colorEdge{
+            position: absolute;
+            margin-top:-70/@bfn;
+            margin-left:-70/@bfn;
+            width:540/@bfn;
+            height:640/@bfn; 
+        }
+        .cancle{
+            position: relative;
+            // position: absolute;
+            width:80/@bfn;
+            height:80/@bfn;
+            right:0;
+            top:-85/@bfn;
+            cursor: pointer;
+            // z-index:1000;
+            margin-left:340/@bfn;
+        }
+        .title{
+            position:absolute;
+            font-size:26/@bfn;
+            color:#fff;
+            top:48%;
+            left:18%;
+            &::after{
+                // 伪类需要相对于父元素来定位
+                @Rules();
+            }
+            &::before{
+                  // 伪类需要相对于父元素来定位
+                 left:-50/@bfn;
+                 @Rules();
+            }
+        }
+        .submit{
+            position: absolute;
+            width:380/@bfn;
+            height:80/@bfn;
+            top:65%;
+            left:3%;
+            transform: scale(1);
+        }
+    }
+    .goodLuck{
+        position:fixed;
+        left:0;
+        top:0;
+        right:0;
+        bottom:0;
+        background: rgba(0,0,0,.6);
+    }
+    .maskLayer{
+        background:url('../img/hongbao.png') no-repeat center;
+        background-size:cover;
+        position: absolute;
+        top:50%;
+        left:50%;
+        // z-index:1000;
+        margin-left:-350/@bfn;
+        margin-top:-300/@bfn;
+        width:700/@bfn;
+        height:600/@bfn;
+        color:#fff;
+       
+        .tit{
+            width:350/@bfn;
+            position: absolute;
+            top:25%;
+            text-align: center;
+            left:25%;
+            font-size:30/@bfn;
+        }
+        .main{
+            width:350/@bfn;
+            position: absolute;
+            top:38%;
+            left:28%;
+        }
+    }
+    .close{
+        // position: relative;
+        position: absolute;
+        width:80/@bfn;
+        height:80/@bfn;
+        // right:0;
+        // top:-85/@bfn;
+        bottom:-100/@bfn;;
+        // margin-left:340/@bfn;
+        left:45%;
+    }
+}

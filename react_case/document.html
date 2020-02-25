@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+   <div>
+     <p>我是p标签</p>
+     <div class="names bar"></div>
+     <form name="x"></form>
+     <div id=para1"">我的书信id=para1</div>
+   </div>
+
+
+
+
+
+  <script>
+  /**** 
+    1. document.querySelector()，document.querySelectorAll()  
+    2. document.getElementsByTagName()      
+    3. document.getElementsByClassName()    
+    4. document.getElementsByName()
+    5. document.getElementById()
+    6. document.createElement() 生成元素
+  ***/
+  var paras = document.getElementsByTagName('p');
+      paras instanceof HTMLCollection // true  
+  console.log(paras)
+
+  // 如果传入*，就可以返回文档中所有 HTML 元素。
+  var allElements = document.getElementsByTagName('*');
+  // className
+  var elements = document.getElementsByClassName('names bar');
+  // name 相同的可能不止一个
+  var forms = document.getElementsByName('x');
+  forms[0].tagName // "FORM"
+  // id
+  var elem = document.getElementById('para1');
+  // 创建一个元素 ，生成节点
+  var newDiv = document.createElement('div');
+  </script>
+</body>
+</html>
