@@ -7,16 +7,12 @@
 </head>
 <body>
 
-   <div>
+   <div id="app">
      <p>我是p标签</p>
-     <div class="names bar"></div>
-     <form name="x"></form>
+     <div class="names bar">className</div>
+     <form name="x">name</form>
      <div id=para1"">我的书信id=para1</div>
    </div>
-
-
-
-
 
   <script>
   /**** 
@@ -41,7 +37,8 @@
   // id
   var elem = document.getElementById('para1');
   // 创建一个元素 ，生成节点
-  var newDiv = document.createElement('div');
+  var newDiv = document.createElement('h1');
+  console.log(newDiv)
   </script>
 </body>
 </html>

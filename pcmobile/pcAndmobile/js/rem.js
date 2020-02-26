@@ -7,8 +7,9 @@ function adaptive(doc, win) {
 		var clientWidth = docEl.clientWidth;
 		if(!clientWidth) return;
 		if(clientWidth >= 1920) {
+    
+			docEl.style.fontSize = '100px';// 当前宽度大于1920的时候 默认为100px
 
-			docEl.style.fontSize = '100px';//这个是根据我自己项目调的
 		} else {
 
 			docEl.style.fontSize = 100 * (clientWidth / 1920) + 'px';
