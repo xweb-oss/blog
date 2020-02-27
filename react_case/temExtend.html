@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>html模板继承</title>
+</head>
+<style>
+  #app {
+    padding: 0;
+    margin: 0;
+  }
+
+  ul {
+    font-size: 24px;
+  }
+
+  .plue p {
+    font-size: 20px;
+    color: red;
+  }
+</style>
+
+<body>
+  <div id="app">
+    <header>
+      <ul>
+        <li>
+          测试html模板的继承1
+        </li>
+        <li>
+          测试html模板的继承2
+        </li>
+        <li>
+          测试html模板的继承3
+        </li>
+      </ul>
+    </header>
+    {% block main %} {% endblock %}
+    <footer>
+      <div>八大姑其大意</div>
+    </footer>
+  </div>
+</body>
+
+</html>
