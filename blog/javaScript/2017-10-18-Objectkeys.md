@@ -41,3 +41,14 @@ Object.keys(person).map((key)=>{
 var obj = { foo: 'bar', baz: 42 };
 console.log(Object.values(obj)); // ['bar', 42]
 ```
+
+* hasOwnProperty检查一个对象中是否含有对应的属性
+eg: 
+```js
+   var obj ={
+     name:'苍老师',
+     age:18,
+   }
+   obj.hasOwnProperty('name')  // true
+   obj.hasOwnProperty('msg')  // false
+```
