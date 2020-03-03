@@ -5,9 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+<style>
+  #app{
+    background:#888;
+    padding:20px;
+  }
+  #btn{
+    height:50px;
+  }
+  .flex_test{
+    /* position:relative; */
+    display:flex;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    justify-content: space-between;
+    padding:10px;
+    width:120px;
+    height:120px;
+    background:rgba(252, 247, 247, 0.747);
+    border:10px solid #fff;
+    border-radius: 8px;
+    box-shadow:-10px -10px 5px #888;
+  }
+  .cirle{
+     width:25px;
+     height:25px;
+     border-radius: 50%;
+     background:#000;
+     box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.774);
+  }
+  .two{
+    align-self: center;
+   /* align-content: 针对多行，单行不起作用  */
+  }
+</style>
 <body>
-  <div>
+  <div id="app">
       <div id="btn">点击我的时候打印hello word</div>
+      <div class="flex_test">
+          <div class="cirle"></div>
+          <div class="cirle two"></div>
+      </div>
   </div>
   <script>
 
