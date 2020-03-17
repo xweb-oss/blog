@@ -43,3 +43,17 @@ location: Alanbang
 ![GitHub](../img/photoshop/senven.jpg)
 
 ### 图片换背景
+
+> 第一步: 选中自己所需要的图片部分
+
+![GitHub](../img/photoshop/a.jpg)
+
+> 第二步 : 放进你需要的背景图
+
+![GitHub](../img/photoshop/b.jpg)
+
+> 第三步： 调整大小                                                                                                                                                                                                                                           
+
+![GitHub](../img/photoshop/c.jpg)
+
+### 
