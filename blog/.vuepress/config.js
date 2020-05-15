@@ -1,7 +1,7 @@
 module.exports = {
   base: '/',
-  title: '前端之路',
-  description: '技术越好,脾气越小。人丑事多',
+  title: '埃尔维雅之快乐生活',
+  description: '忍',
   head: [ // 注入到当前页面的 HTML <head> 中的标签
     ['link', { rel: 'icon', href: '../img/xxx.jpg' }], // 增加一个自定义的 favicon(网页标签的图标)
     ["link", { rel: "manifest", href: "/manifest.json" }],

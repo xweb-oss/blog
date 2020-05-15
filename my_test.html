@@ -19,26 +19,26 @@
   let newNumber = numbers.map(function(elem, index, arr) {
     return elem * index;
   });
-  console.log(newNumber)
+  // console.log(newNumber)
 
   var arr = ['a', 'b', 'c','d','f'];
   let newArr = numbers.map(function (e) {
-    console.log(e)   // 1 2 3 4
-    console.log(this)  // 指向arr数组
+    // console.log(e)   // 1 2 3 4
+    // console.log(this)  // 指向arr数组
     return this[e];
   }, arr)
-  console.log(newArr) // ["b", "c", "d", "f"]
+  // console.log(newArr) // ["b", "c", "d", "f"]
 
 
  // filter ======================= 当前成员，当前位置和整个数组。
   let newfioter = numbers.filter(function (ele, index, arr) {
-    console.log(ele) 
-    console.log(index) 
-    console.log(arr)
+    // console.log(ele) 
+    // console.log(index) 
+    // console.log(arr)
     return index % 2 === 0;
   });
-  console.log(newfioter)
-  console.table(newfioter)
+  // console.log(newfioter)
+  // console.table(newfioter)
 
    // 构造函数
    var person  = {
@@ -48,7 +48,7 @@
        return '姓名'+ this.name
      }
    }
-   console.log(person.describe)
+  //  console.log(person.describe)
   // this.name表示name属性所在的那个对象。
   // 由于this.name是在describe方法中调用，
   // 而describe方法所在的当前对象是person，因此this指向person，this.name就是person.name。
@@ -68,15 +68,37 @@
   A.describe() // "姓名：张三"
   B.describe() // "姓名：李四"
 
-
-  //  promise 一般有二个状态 a.为完成  b.失败  c.成功      执行得过程一般只有二种  a ------ b       a -------- c
-  function timeout(ms){
-    return new promise ((resolve,reject)=>{
-      setTimeout(resolve,ms,'done')
-    })
+// 知识点一
+let number = [4,38] // ..number 得到4和38
+  function add (x,y){
+    return x+y;
   }
-  // 上面代码中，timeout(100)返回一个 Promise 实例。100毫秒以后，该实例的状态会变为fulfilled。
-  timeout(100)
+add(...number) // 接口42 ，
+
+// 知识点 二  得到一个数组的最大值
+ console.log(Math.max(...[14, 3, 77]))
+
+ // 知识点 三 如果将扩展运算符用于数组赋值，只能放在参数的最后一位，否则会报错。
+ const [...butLast, last] = [1, 2, 3, 4, 5];// 报错
+ const [first, ...middle, last] = [1, 2, 3, 4, 5];// 报错
+
+ // 知识点 四 扩展运算符还可以将字符串转为真正的数组。
+ [...'hello'] // [ "h", "e", "l", "l", "o" ]
+
+ 
+// 变量提升  报undfind ===>相当于 var isvar; console.log(isvar)  isvar = '9'
+  console.log(isvar)
+  var isvar ='9'  
+  let islet ='5'  // islet 没定义
+
+  // const声明得变量在初始化之前不可以被引用,暂时性死去。
+  const randomValue = 21; 
+  function getInfo(){
+    console.log(typeof randomValue) // ReferenceError: randomValue is not defined
+    const randomValue = 'vhange value'
+  }
+  getInfo()
+
   </script>
 </body>
 </html>
