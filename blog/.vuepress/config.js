@@ -33,12 +33,12 @@ module.exports = {
         link: '/vue/',   // 走about文件夹 ，，自己新建
       },
       {
-        text: 'Github',
-        link: 'https://github.com/xweb-oss',
+        text: '软件测试',
+        link: '/test/',
       },
       {
-        text: 'Gitee',
-        link: 'https://gitee.com/wangchengzhu/dashboard',
+        text: 'Github',
+        link: 'https://github.com/xweb-oss',
       }
     ],
     sidebar: {
@@ -62,7 +62,7 @@ module.exports = {
       ],
     },
     modifyBlogPluginOptions(blogPluginOptions) {
-      const classify = ['photography','vue','posts','javaScript','react']
+      const classify = ['photography','vue','posts','javaScript','react','test']
       classify.map(function (item) {
         let photographyDirectoryClassifier = {
           id: item,
