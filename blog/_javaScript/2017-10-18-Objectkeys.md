@@ -34,6 +34,13 @@ Object.keys(person).map((key)=>{
 　　person[key] // 获取到属性对应的值，做一些处理
 
 }) 
+
+事列2:
+  import * as filters from './utils/filter'
+  Object.keys(filters).forEach(key => {
+    Vue.filter(key, filters[key])
+  })
+
 ```
 ### Object.values方法之详解
 1. 与Object.keys相反。
