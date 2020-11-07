@@ -23,22 +23,43 @@
     5. document.getElementById()
     6. document.createElement() 生成元素
   ***/
-  var paras = document.getElementsByTagName('p');
-      paras instanceof HTMLCollection // true  
-  console.log(paras)
+  // var paras = document.getElementsByTagName('p');
+  //     paras instanceof HTMLCollection // true  
+  // console.log(paras)
 
-  // 如果传入*，就可以返回文档中所有 HTML 元素。
-  var allElements = document.getElementsByTagName('*');
-  // className
-  var elements = document.getElementsByClassName('names bar');
-  // name 相同的可能不止一个
-  var forms = document.getElementsByName('x');
-  forms[0].tagName // "FORM"
-  // id
-  var elem = document.getElementById('para1');
-  // 创建一个元素 ，生成节点
-  var newDiv = document.createElement('h1');
-  console.log(newDiv)
+  // // 如果传入*，就可以返回文档中所有 HTML 元素。
+  // var allElements = document.getElementsByTagName('*');
+  // // className
+  // var elements = document.getElementsByClassName('names bar');
+  // // name 相同的可能不止一个
+  // var forms = document.getElementsByName('x');
+  // forms[0].tagName // "FORM"
+  // // id
+  // var elem = document.getElementById('para1');
+  // // 创建一个元素 ，生成节点
+  // var newDiv = document.createElement('h1');
+  // console.log(newDiv)
+
+
+
+  (function (U, C, K, F, label, j, s) {
+
+      U[F] = U[F] || function () {
+        (U[F].label = U[F].label || []).push(arguments)
+      };
+      j = C.createElement(K),
+        s = C.getElementsByTagName(K)[0];
+      j.async = true;
+      j.charset = 'UTF-8';
+      j.src = 'https://app.uckf.net/app/index.min.js';
+      s.parentNode.insertBefore(j, s);
+    })(window, document, 'script', '_UCCHAT');
+
+    _UCCHAT(59550806);
+
+
   </script>
+
+
 </body>
 </html>

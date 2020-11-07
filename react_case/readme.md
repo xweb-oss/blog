@@ -167,3 +167,15 @@ obj.a().b();
   相当于
   <input v-bind:value="something" v-on:input="something = $event.target.value">
   ```
+
+  13. vue-loader是什么？使用它的用途有哪些？
+     a. 解析.vue文件的一个加载器。
+     b. 用途：js可以写es6、style样式可以scss或less、template可以加jade等
+
+  14. router 和 route 区别
+
+  router  是 '路由实列'对象 包括了路由的跳转方法，钩子函数等
+  route   是 '路由信息对象' 包括path,params,hash query  等 路由信息参数
+
+  15. vue.js的两个核心是什么？
+    数据驱动 组件系统
