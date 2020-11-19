@@ -1,5 +1,5 @@
 ---
-date: 2017- 10- 18
+date: 2017-9- 28
 tag: 
  -  Object.keys方法之详解
 author: xweb
@@ -26,7 +26,7 @@ let str = "saasd字符串"
 Object.keys(str) // ["0", "1", "2", "3", "4", "5", "6", "7"]
 ```
 **五、常用技巧**
-```sh
+```js
 let person = {name:"张三",age:25,address:"深圳",getName:function(){}}
 
 Object.keys(person).map((key)=>{
