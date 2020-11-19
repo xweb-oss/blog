@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{ margin: 0;padding: 0;}
+    .row{ position: relative;}
+    .app .brandHeader{ margin-bottom:20px;margin-top:20px;text-align: center;}
+    #carName .row{width:380px;height:380px;overflow: hidden;margin:0 20px;}
+    #carName .row .bigBox{height:260px;width:100%;}
+    #carName .row .bigBox .small{height:100%;}
+    #carName .row .text div{ margin-top:10px;}
+    #carName .row .price{ color:red; font-weight: 600;}
+    #carName{ display:flex;flex-wrap: wrap;}
+    .bigImg{ display:none;position: absolute; top:0;left:350px;height:580px;z-index:9;width:580px}
+</style>
+<body>
+    <div class="app">
+        <div class="brandHeader">
+            <h3>摩托车品牌</h3>
+            <p>链接：'http://www.jiche.com/pinpai/'</p>
+        </div>
+        <div id="carName"></div>
+    </div>
+</body>
+<script>
+    var carStr =''
+    var carList = [
+        {id:0,name:'杜卡迪',price:'~39999',years:'2019',icon:'./img/dukadi.jpg'},
+        {id:1,name:'大洲本田',price:'~2999',years:'2019',icon:'./img/newbigbentian.jpg'},
+        {id:2,name:'铃木',price:'~11199',years:'2019',icon:'./img/linmu.jpg'},
+        {id:3,name:'雅马哈',price:'~9999',years:'2019',icon:'./img/yamaha.jpg'},
+        {id:7,name:'本田',price:'~11425',years:'2019',icon:'./img/bentian.jpg'},
+        {id:4,name:'川崎',price:'~34589',years:'2019',icon:'./img/chuanqi.jpg'},
+        {id:5,name:'宝马',price:'~15500',years:'2019',icon:'./img/bmw.jpg'},
+        {id:6,name:'哈雷',price:'~17699',years:'2019',icon:'./img/halei.jpg'},
+    ]
+
+    carList.forEach(e => {
+        carStr += `
+            <div class="row">
+                <div class="bigBox">
+                    <img src="${e.icon}" class="small" alt="图片加载失败">
+                </div>
+                <div class="text">
+                    <div>品牌: ${e.name}</div>
+                    <div class="price">价格: ${e.price} 美元</div>
+                    <div>年份: ${e.years}</div>
+                </div>
+            </div>
+            <div class="bigImg">
+                <img src="${e.icon}" alt="图片加载失败" width="100%">
+            </div>
+        `
+    })
+    //拼接完字符串数组后用innerHTML把它渲染到页面中
+    document.getElementById("carName").innerHTML = carStr;
+
+    // window.onload = function(){ 
+    //     // 绑定事件
+    //     function handleMover(index){
+    //         console.log(index)
+    //     }
+    // }
+
+
+    var getBigBox = document.getElementsByClassName('bigBox')
+    var getBigImg = document.getElementsByClassName('bigImg')
+    getBigBox[0].onmouseover = function (){
+        return getBigImg[0].style.display = 'block'
+    }
+    getBigBox[0].onmouseout = function (){
+        return getBigImg[0].style.display = 'none'
+    }
+    </script>
+    </html>
