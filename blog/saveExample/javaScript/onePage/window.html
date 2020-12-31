@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浏览器对象模型 (BOM)</title>
+</head>
+<body>
+    <div class="app">
+        <ul>
+            <li>
+                <h2>Window 对象</h2>
+                <p>其他 Window 方法</p>
+                <p>* window.open() - 打开新窗口</p>
+                <p>* window.close() - 关闭当前窗口</p>
+                <p>* window.moveTo() - 移动当前窗口</p>
+                <p>* window.resizeTo() - 调整当前窗口的尺寸</p>
+            </li>
+            <li>
+                <h2>Window Screen 可用宽度</h2>
+            </li>
+            <li>
+                <h2>Window Location</h2>
+                <p>* location.hostname 返回 web 主机的域名</p>
+                <p>* location.pathname 返回当前页面的路径和文件名</p>
+                <p>* location.port 返回 web 主机的端口 (80 或 443)</p>
+                <p>* location.protocol 返回所使用的 web 协议(http: 或 https:)</p>
+                <p>* Window Location Href 属性返回当前页面的 URL。</p>
+            </li>
+            <li>
+                <h2>Window History</h2>
+                <p>* history.back() - 与在浏览器点击后退按钮相同</p>
+                <p>* history.forward() - 与在浏览器中点击向前按钮相同</p>
+                <p>* history.go() 这个方法来实现向前，后退的功能。</p>
+                <p>* history.go(0) 里面的参数为0,表示刷新页面。</p>
+            </li>
+            <li>
+                <h2>JavaScript 计时事件</h2>
+                <p>setTimeout() - 在指定的毫秒数后执行指定代码。</p>
+                <p>setInterval() - 间隔指定的毫秒数不停地执行指定的代码。</p>
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    // 1. 浏览器的尺寸
+    var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+    var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
+
+    console.log('浏览器窗口高'+ h)
+    console.log('浏览器窗口宽'+ w)
+
+    // 2. 浏览器可用宽度
+    var sw = screen.availWidth
+    var sh = screen.availHeight 
+</script>
+</html>

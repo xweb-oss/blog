@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript简介</title>
+</head>
+<body>
+    <div class="app">
+       <ul>
+           <li>
+               <h2>JavaScript：改变 HTML 内容</h2>
+               <p id="demo">JavaScript 能改变 HTML 元素的内容。 </p>
+               <button type="button" onclick="myFunction()">点击这里</button>
+           </li>
+           <li>
+               <h2>JavaScript：改变 HTML 图像</h2>
+               <img id="myimage" onclick="changeImage()" src="../images/pic_bulboff.gif" width="100" height="180">
+               <p>点击灯泡就可以打开或关闭这盏灯</p>       
+           </li>
+           <li>
+               <h2>JavaScript：改变 HTML 样式</h2>
+               <p id="changeStyle">JavaScript 能改变 HTML 元素的样式。</p>
+               <button type="button" onclick="styleBtn()">点击这里</button>
+           </li>
+           <li>
+               <h2>JavaScript：验证输入</h2>
+               <p>请输入数字。如果输入值不是数字，浏览器会弹出提示框。</p>
+               <input id="num" type="text">
+               <button type="button" onclick="myNumFun()">点击这里</button>
+           </li>
+       </ul>
+    </div>
+</body>
+<script>
+    // 1. JavaScript：改变 HTML 内容
+    function myFunction(){
+        var a = document.getElementById('demo')  // 找到元素
+        a.innerHTML = 'HELLO JAVASCRIPT'     // 改变内容
+    }
+    // 2. JavaScript：改变 HTML 图像
+    function changeImage(){
+        var isImg = document.getElementById('myimage')
+        console.log(isImg.src)
+        if(isImg.src.match('bulbon')){
+            isImg.src="../images/pic_bulboff.gif";
+        }else{
+            isImg.src="../images/pic_bulbon.gif";
+        }
+
+    }
+    // 3. JavaScript：改变 HTML 样式
+    function styleBtn(){
+        var isstyle = document.getElementById("changeStyle")// 找元素
+        isstyle.style.color="#ff0000";                  // 改变样式
+
+        // 动态 改变背景图
+        // a.style.backgroundImage = 'url(' + 图片地址 + ')'
+    }
+    // 4. JavaScript：验证输入
+    function myNumFun(){
+        var b = document.getElementById('num').value  ;  // 获取到input的值
+        if( isNaN(b) || b.replace(/(^\s*)|(\s*$)/g,"") == ""){
+		    alert("不是数字");
+	    }
+    }
+</script>
+</html>

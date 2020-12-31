@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="app">
+       <ul>
+           <li>
+               <h2>JavaScript 局部作用域</h2>
+               <p id="demo">变量在函数内声明，变量为局部作用域。局部变量：只能在函数内部访问。</p>
+
+               <p>如果变量在函数内没有声明（没有使用 var 关键字），该变量为全局变量。
+                以下实例中 carName 在函数内，但是为全局变量。</p>
+           </li>
+           <li>
+               <h2>JavaScript 全局变量</h2>
+               <p>变量在函数外定义，即为全局变量。
+                全局变量有 全局作用域: 网页中所有脚本和函数均可使用。 </p>
+           </li>
+           <li>
+               <h2>JavaScript 变量生命周期</h2>
+               <p>局部变量在函数执行完毕后销毁。
+                全局变量在页面关闭后销毁。</p>
+           </li>
+           <li>
+               <h2>es6 的let const 块级作用域</h2>
+           </li>
+           <li>
+               <h2>JavaScript this 关键字</h2>
+               <p>
+                * 在方法中，this 表示该方法所属的对象。
+
+                * 如果单独使用，this 表示全局对象。
+
+                * 在函数中，this 表示全局对象。
+
+                * 在函数中，在严格模式下，this 是未定义的(undefined)。
+
+                * 在事件中this 指向了接收事件的 HTML 元素：。
+
+                * 类似 call() 和 apply() 方法可以将 this 引用到任何对象。
+               </p>
+               <h5><p>实例中，<b>this</b> 指向了 <b>person</b> 对象。</p></h5>
+               <p id="val"></p>
+               <p id="alone"></p>
+               <button onclick="this.style.display='none'">点我后我就消失了</button>
+           </li>
+       </ul>
+    </div>
+</body>
+<script>
+    // 1. 作用域    let var 函数中局中部作用域 差不多 一样
+document.getElementById("demo").innerHTML = "carName 的类型是：" +  typeof carName; // 无法获取carName对应的值，其值为undefind
+
+console.log(carName2)  // '全局变量'
+function myFunction() {
+    var carName = "Volvo";
+    carName2 = '全局变量'
+}
+myFunction();
+
+// 1-1. let 块级作用域把 val 定在了 { } 里面  外面不可以使用
+
+{
+    let val = 2
+    consoel.log(val)  // 2
+}
+consoel.log(val)  // 获取不到 val 
+
+
+let i = 5;
+for (let i = 0; i < 10; i++) {
+    // 一些代码...
+}
+// 这里输出 i 为 5
+
+var i = 5;
+for (var i = 0; i < 10; i++) {
+    // 一些代码...
+}
+// 这里输出 i 为 10
+
+
+
+
+// 2. this 指向方法所在对象
+var person = {    
+  firstName: "John",
+  lastName : "Doe",
+  id     : 5566,
+  fullName : function() {
+    return this.firstName + " " + this.lastName;   // 此时 this 指向 person  简单说 this 说就是对象 person
+  }
+};
+
+document.getElementById("val").innerHTML = person.fullName(); // 执行person中的函数并赋值
+
+// 2-1. 单独使用this 
+var x = this
+document.getElementById('alone').innerHTML = x   // 单独使用 this 为  window
+
+
+
+
+
+// ***************** 2-2. apply 和 call 改变 this 指向
+var person1 = {
+  fullName: function() {
+    return this.firstName + " " + this.lastName;  // this指向 person1
+  }
+}
+var person2 = {
+  firstName:"John",
+  lastName: "Doe",
+}
+person1.fullName.call(person2);   // 通过 call 把 this改变指向 为  person2
+// 返回结果  "John Doe"
+
+
+// call apply 之间的区别 ------ 它们的作用一模一样,区别仅在于传入参数的形式的不同。
+// 1. apply 接受两个参数,第一个参数指定了函数体内 this 对象的指向, 第二个参数为一个数组
+
+var func = function( a, b, c ){ 
+    console.log([a,b,c]); //输出:[1,2,3]
+};
+func.apply( null, [ 1, 2, 3 ] );
+
+// 2. call 传入的参数数量不固定, 跟apply 相同的是,第一个参数也是代表函数体内的 this 指向, 从第二个参数开始往后,每个参数被依次传入函数
+var funcll = function( a, b, c ){ 
+    console.log([a,b,c]); //输出:[1,2,3]
+};
+funcll.call( null, 1, 2, 3 );  // 除了第一个参数  ，后面参数为函数
+
+//clla apply总结 ：当使用 call 或者 apply 的时候,如果我们传入的第一个参数为 null,函数体内的 this 会指 向默认的宿主对象,在浏览器中则是 window
+
+</script>
+</html>

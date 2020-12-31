@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="app">
+        <ul>
+            <li>
+                <h2>JSON 字符串转换为 JavaScript 对象</h2>
+                <h2>JSON.stringify() 方法用于将 JavaScript 值转换为 JSON 字符串。</h2>
+                <p>JavaScript 内置函数 JSON.parse() 将字符串转换为 JavaScript 对象:</p>
+                <p id="demo"></p>
+                <a href="#">点击此处</a>
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    // 1. JSON 字符串转换为 JavaScript 对象
+
+var text = '{ "sites" : [' +
+    '{ "name":"Runoob" , "url":"www.runoob.com" },' +
+    '{ "name":"Google" , "url":"www.google.com" },' +
+    '{ "name":"Taobao" , "url":"www.taobao.com" } ]}';
+    
+obj = JSON.parse(text);
+document.getElementById("demo").innerHTML = obj.sites[1].name + " " + obj.sites[1].url;
+
+// 2. (匿名) /自执行行数
+(function(){
+    var text = '我自己执行了'
+    console.log(text)
+})();
+</script>
+</html>
