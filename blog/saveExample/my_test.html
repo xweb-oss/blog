@@ -100,14 +100,18 @@
 //   getInfo()
 
 
+  var names = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice'];
 
-  var aa = [1,2,3,4,4,3,3]
-  aa.map((item,index)=>{
-    if(item == 3){
-      aa.slice(index,1)
-    }
-  })
-  console.log(aa)
+var countedNames = names.reduce(function (allNames, name) {
+  console.log(allNames)
+  console.log(name)
+  if (name in allNames) {
+    allNames[name]++;
+  }else {
+    allNames[name] = 1;
+  }
+  return allNames;
+}, {});
   </script>
 </body>
 </html>
