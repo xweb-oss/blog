@@ -66,7 +66,7 @@ function total(a,b){
   }
 }
 
-2. 页面渲染html的过程？ （自己理解）
+2. 页面渲染html的过程？ （自己理解）     ** 深入了解 **
 主要 五个方面:
     DNS 查询
     TCP 连接
@@ -76,11 +76,49 @@ function total(a,b){
 
 3. 如何中断ajax请求？
 a , 设置超时时间自动断开，
-b , ，另一种是手动停止ajax请求，其核心是调用XML对象的abort方法，ajax.abort()
+b , 另一种是手动停止ajax请求，其核心是调用XML对象的abort方法，ajax.abort()
 
 4. 说一下宏任务和微任务？
 宏任务：当前调用栈中执行的任务称为宏任务。（主代码快，定时器等等）。
 微任务： 当前（此次事件循环中）宏任务执行完，在下一个宏任务开始之前需要执行的任务为微任务。（可以理解为回调事件，promise.then，proness.nextTick等等）。
+
+扩展: 
+1. nextTick() ：是将回调函数延迟在下一次dom更新数据后调用
+```js
+<template>
+  <button id="firstBtn" @click="testClick()" ref="aa">{{testMsg}}</button>
+</template>
+export default {
+  data(){
+    return {
+      testMsg:'原始值'
+    }
+  }
+  methods:{
+    testClick(){
+      this.testMsg="修改后的值";
+      console.log(this.$refs.aa.innerText);   //that.$refs.aa获取指定DOM，输出：原始值
+    }
+  }
+}
+```
+2. promise 
+a. 三种状态：pending(进行中) fulfiled(已成功) rejected(已失败)
+promise 对象接受一个回调函数作为参数 ，该回调函数有二个参数（reslove 成功回调，reject失败的回调）
+
+than,catch 方法返回一个新的 promise实列
+
+throw 中断
+3）Promise缺点
+
+1、无法取消Promise，一旦新建它就会立即执行，无法中途取消。
+2、如果不设置回调函数，Promise内部抛出的错误，不会反应到外部。
+3、当处于Pending状态时，无法得知目前进展到哪一个阶段（刚刚开始还是即将完成）。
+4、Promise 真正执行回调的时候，定义 Promise 那部分实际上已经走完了，所以 Promise 的报错堆栈上下文不太友好。
+
+2-1. 原型链
+  就是一层一层的查找对象属性,叫做原型链。（所有对象多有 '_proto__' 属性）
+      
 
 5. 说一下继承的几种方式及优缺点？
 a. 构造函数 使用call或apply方法，将父对象的构造函数绑定在子对象上  缺点 :(没有原型: 无法复用 )
@@ -117,7 +155,7 @@ cookie是服务器返回的，指定了expire time(有效期)的是持久cookie,
 get：传参方式会显示在地址栏中,url后通过 ? 连接,通过 & 进行参数分割。
 post传参存放在 http 包体内。
 
-get 通过url参数的时候，数据长度限制 2048字符，post 美元长度限制
+get 通过url参数的时候，数据长度限制 2048字符，post 没有长度限制
 
 get 后退不受影响，post 后退会重新请求
 
@@ -125,18 +163,34 @@ get 后退不受影响，post 后退会重新请求
 
 200 请成功返回结果  201 表示资源正在创建  3xx 表示重定向 400 请求出错  401 没有认证（比如 没有带 token ） 500 服务器出错
 
-12. promise 
-a. 三种状态：pending(进行中) fulfiled(已成功) rejected(已失败)
-promise 对象接受一个回调函数作为参数 ，该回调函数有二个参数（reslove 成功回调，reject失败的回调）
 
-than,catch 方法返回一个新的 promise实列
+vue 区域
+1. vue常用修饰符
+    a. .precent：提交事件不在重载页面
+    b. .stop： 阻止继续单击事件冒泡
+    c. .self：当事件发生在该元素本身而不是子元素的时候会触发
+    d. .capture: 事件侦听, 事件发生的时候会调用
 
-throw 中断
-3）Promise缺点
+2. Vue等单页面应用及其优缺点?
 
-1、无法取消Promise，一旦新建它就会立即执行，无法中途取消。
-2、如果不设置回调函数，Promise内部抛出的错误，不会反应到外部。
-3、当处于Pending状态时，无法得知目前进展到哪一个阶段（刚刚开始还是即将完成）。
-4、Promise 真正执行回调的时候，定义 Promise 那部分实际上已经走完了，所以 Promise 的报错堆栈上下文不太友好。
+  a. 优点：Vue的目标是通过尽可能简单的API实现响应的数据绑定和组合的视图组件，核心是一个响应的数据绑定系统。MVVM、数据驱动、组件化、轻量、简洁、高效、快速、模块友好
+  b. 缺点：不支持低版本的浏览器， 最低只支持IE9；不利于SEO的优化（如果要支持SEO，建议通过服务端来进行渲染组件）；第一次加载首页耗时相对长一点；不可以使用浏览器的导航按钮需要自行实现前进后退
 
-13. 
+3. vue-loader是什么？使用它的用途有哪些？
+  解析: vue 文件的一个加载器。 比如： js可以使用 es6 , 样式 style 可以使用css 预编译 scss less
+
+4. 为什么避免v-if 和 v-for 用在一起
+   .v-for 的优先级比 v-if 高，用在一起会重复去遍历列表。
+
+5. 虚拟DOM 
+   就是由 vue 组件树建立起来的整个 Vnode 树的一种叫法 （vnode 节点）,就是用js对象记录一个 dom 节点的副本,当dom 发生更改的时候，先用虚拟dom 进行diff, 算出最小的差异，然后在修改真实的dom,提高性能
+
+5-1. diff算法是一种通过'同层的树节点' 进行比较的高效算法,避免了对树进行逐层搜索遍历
+
+6. 为什么在 Vue3.0 采用了 Proxy,抛弃 Object.defineProperty?
+
+Object.defineProperty 只能劫持对象的属性,因此我们需要对每个对象的每个属性进行遍历。Vue 2.x 里,是通过 递归 + 遍历 data 对象来实现对数据的监控的,如果属性值也是对象那么需要深度遍历,显然如果能劫持一个完整的对象是才是更好的选择。
+
+Proxy 可以劫持整个对象,并返回一个新的对象。Proxy 不仅可以代理对象,还可以代理数组。还可以代理动态增加的属性。
+
+7. 
