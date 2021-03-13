@@ -13,7 +13,7 @@ location: Alanbang
 
 3. 通过这三个参数，可以生成一个完整的模板;
 
-> 第一个参数（必要参数）：主要用于提供DOM的html内容，类型可以是字符串、对象或函数.
+> 第一个参数（必要参数）：主要用于提供DOM的html内容，类型可以是字符串、对象或函数.(标签名)
 > 第二个参数（类型是对象，可选）：用于设置这个DOM的一些样式、属性、传的组件的参数、绑定事件之类.
 > 第三个参数（类型是数组，数组元素类型是VNode，可选）：主要是指该结点下还有其他结点，用于设置分发的内容，包括新增的其他组件。注意，组件树中的所有VNode必须是唯一的.
 
@@ -79,3 +79,5 @@ export default {
 <div class="btn btn-warning" v-else-if="type === 'warning'">{{ text }}</div>
 
 ```
+
+* 尚硅谷['https://www.youtube.com/watch?v=MkRyxVmkeqk&list=PLmOn9nNkQxJFbDF2ZZgaSlMiurxt9saFx&index=18']

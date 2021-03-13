@@ -7,9 +7,176 @@
 </head>
 <body>
   <div class="panel-body">
+    <!-- 原生 -->
     <video width="100%" controls="controls">
         <source src="https://github.com/michaelliao/learn-javascript/raw/master/video/vscode-nodejs.mp4">
     </video>
+
+
+    <!-- vue中使用插件 vue-video-player -->
+    <!-- <template>
+      <div>
+        <video-player
+          class="vjs-custom-skin g-video-player"
+          ref="videoPlayer"
+          :options="playerOptions"
+          :playsinline="true"
+          @play="onPlayerPlay($event)"
+          @pause="onPlayerPause($event)"
+          @ended="onPlayerEnded($event)"
+          @loadeddata="onPlayerLoadeddata($event)"
+          @waiting="onPlayerWaiting($event)"
+          @playing="onPlayerPlaying($event)"
+          @timeupdate="onPlayerTimeupdate($event)"
+          @canplay="onPlayerCanplay($event)"
+          @canplaythrough="onPlayerCanplaythrough($event)"
+          @ready="playerReadied"
+          @statechanged="playerStateChanged($event)">
+        </video-player>
+      </div>
+    </template>
+    
+    <script>
+      import 'video.js/dist/video-js.css'
+      import { videoPlayer } from 'vue-video-player'
+      // var notSupportedMessage = {
+      //   'zh_CN': "此视频地址不存在或无法播放",
+      //   'en_US': "This video address does not exist or cannot be played ",
+      //   'hi_IN': "यह वीडियो पता मौजूद नहीं है या इसे चलाया नहीं जा सकता है "
+      // }
+      export default {
+        components: { videoPlayer },
+        props: {
+          // onlyKey: {
+          //   type: String,
+          //   default: ''
+          // },
+          // videoOptions: {
+          //   type: Object,
+          //   default: () => {
+          //     return {}
+          //   }
+          // },
+          poster:{
+            type:String,
+            required:true
+          },
+          videoSources: {
+            type: Array,
+            default: () => {
+              return [{
+                type: "video/mp4",
+                // mp4
+                src: "http://vjs.zencdn.net/v/oceans.mp4",
+                // webm
+                // src: "https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm"
+              }]
+            }
+          }
+        },
+        data() {
+          return {
+            // videojs options
+            playerOptions: {
+              width: document.documentElement.clientWidth,
+              autoplay: false, //如果true,浏览器准备好时开始回放。
+              muted: false, // 默认情况下将会消除任何音频。
+              loop: false, // 导致视频一结束就重新开始。
+              language: 'en_US', // zh 中文  inc 印地语 en_US 英语
+              playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
+    
+              preload: 'auto', // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
+              aspectRatio: '16:9', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
+              fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
+              flash:{ hls:{ withCredentials:false }},
+              html5:{ hls:{ withCredentials:false }},
+              sources: this.videoSources,
+              defaultSrcReId: 2,
+              poster:'', // 你的封面地址
+              // notSupportedMessage: notSupportedMessage[this.$Cookies.get('lang') || 'en_US'], //允许覆盖Video.js无法播放媒体源时显示的默认信息。
+              // suppressNotSupportedMessage: "sdfsfs",
+              controlBar: {
+               timeDivider: false,
+               durationDisplay: false,
+               remainingTimeDisplay: false,
+               fullscreenToggle: true // 全屏按钮
+              }
+            }
+          }
+        },
+        computed: {
+          player() {
+            return this.$refs.videoPlayer.player
+          }
+        },
+        created() {
+          this.playerOptions = Object.assign({}, this.playerOptions, this.videoOptions)
+          this.playerOptions.poster = this.poster 
+        },
+        methods: {
+          // listen event
+          onPlayerPlay(player) {
+            // console.log('player play!', player)
+          },
+          // onPlayerPause(player) {
+            // console.log('player pause!', player)
+            // this.$emit('update', { status: 'stop', onlyKey: this.onlyKey })
+          // },
+          onPlayerEnded(player) {
+            // console.log('player ended!', player)
+          },
+          onPlayerLoadeddata(player) {
+            // console.log('player Loadeddata!', player)
+          },
+          onPlayerWaiting(player) {
+            // console.log('player Waiting!', player)
+          },
+          onPlayerPlaying(player) {
+            // console.log('player Playing!', player)
+          },
+          onPlayerTimeupdate(player) {
+            // console.log('player Timeupdate!', player.currentTime())
+          },
+          onPlayerCanplay(player) {
+            // console.log('player Canplay!', player)
+          },
+          onPlayerCanplaythrough(player) {
+            // console.log('player Canplaythrough!', player)
+          },
+          // or listen state event
+          playerStateChanged(playerCurrentState) {
+            // console.log('player current update state', playerCurrentState)
+          },
+          // player is ready
+          playerReadied(player) {
+            // seek to 10s
+            // player.currentTime(1) // 定义播放 的开始时间
+            // console.log('example 01: the player is readied', player)
+          }
+        }
+      }
+    </script> -->
+    
+    <!-- <style lang="scss" scoped>
+      .g-video-player{
+        /deep/ .vjs-big-play-button{ top: 50%; left: 50%; transform: translate(-50%, -50%);}
+        /deep/ .vjs-error-display .vjs-modal-dialog-content{ display: flex; align-items: center;justify-content: center;}
+      }
+      /deep/ .video-js{
+        .vjs-big-play-button{ width: 60px; height:60px; border-radius: 50%;line-height:60px;
+          .vjs-icon-placeholder{ font-size:38px;}
+        }
+        &.vjs-error .vjs-error-display:before{display: none !important;}
+      }
+      /deep/ .vjs-poster{ background-size: cover!important;}
+    </style> -->
+
+
+    <!-- 在组件中使用 -->
+    <!-- import CVideo from './video' -->
+    <!-- <c-video :video-sources="  " :poster='poster'></c-video>
+     -->
+     <!-- poster  sources  为你获取到 数据 -->
 </div>
 </body>
 </html>

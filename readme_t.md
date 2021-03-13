@@ -1,5 +1,7 @@
 
-css 区域
+* 各大大厂面试题网址 [ https://www.axihe.com/edu/ask.html' ]
+
+* css 区域
 
 1. calc, support, media各自的含义及用法？
 @support主要是用于检测浏览器是否支持CSS的某个属性，其实就是条件判断，如果支持某个属性，你可以写一套样式，如果不支持某个属性，你也可以提供另外一套样式作为替补。
@@ -55,7 +57,7 @@ c. ::after / <br> / clear: both
 
 其中这里涉及到 bfc 概念: bfc(块级格式化上下文) 是一个独立的渲染区域，让处于 BFC 内部的元素与外部的元素相互隔离，使内外元素的定位不会相互影响。
 
-js 区域
+* js 区域
 
 1. 写一个 1到100求和
  
@@ -164,7 +166,8 @@ get 后退不受影响，post 后退会重新请求
 200 请成功返回结果  201 表示资源正在创建  3xx 表示重定向 400 请求出错  401 没有认证（比如 没有带 token ） 500 服务器出错
 
 
-vue 区域
+* vue 区域
+
 1. vue常用修饰符
     a. .precent：提交事件不在重载页面
     b. .stop： 阻止继续单击事件冒泡
@@ -187,10 +190,70 @@ vue 区域
 
 5-1. diff算法是一种通过'同层的树节点' 进行比较的高效算法,避免了对树进行逐层搜索遍历
 
-6. 为什么在 Vue3.0 采用了 Proxy,抛弃 Object.defineProperty?
+5-2. 真正的,彻底的弄懂虚拟 DOM 和 diff 算法
+* diff
+就是新虚拟DOM 和 老虚拟DOM 进行精细化比对,实现最小量的更新，最后反应到真正的 dom 上。
 
-Object.defineProperty 只能劫持对象的属性,因此我们需要对每个对象的每个属性进行遍历。Vue 2.x 里,是通过 递归 + 遍历 data 对象来实现对数据的监控的,如果属性值也是对象那么需要深度遍历,显然如果能劫持一个完整的对象是才是更好的选择。
+* 虚拟DOM
+用javaScript对象描述DOM 的层次结构。DOM中的一切属性都在虚拟dom中有对应的属性。
+
+
+
+
 
 Proxy 可以劫持整个对象,并返回一个新的对象。Proxy 不仅可以代理对象,还可以代理数组。还可以代理动态增加的属性。
 
-7. 
+7. 为什么组件的data 必须是一个函数
+   为了每个组件中的data 唯一。如果是一个对象的话,对象是一个引用类型，一个组件实例修改了 data 会影响到其他的组件实例。
+
+8. 组件是怎么通信的 
+a. 父像子传递: props , 传 
+b. 子像父传递：$emit,  传 
+c. 兄弟之间传用  eventBus 传
+d. 后去组件实例用 $ref ,$children $parent
+f. vuex 
+
+9. vue双向绑定的原理
+
+简单来说:是通过数据劫持结合发布者-订阅者模式的方式来实现的，
+<!-- 而vue 是通过 Object.defineProperty()来实现数据劫持的。 -->
+这里可以分成三步:
+1. 实现一个监听器observer,用来劫持,监听所有属性,如果有变动就通知订阅者
+2. 实现一个订阅者的watcher,用来收到属性的变化通知并执行相应的函数,从而跟新视图
+3. 实现一个解析器compile,来扫描和解析每个节点的相关指令,并根据初始化模板数据来初始化相应的订阅器
+
+10. 为什么在 Vue3.0 采用了 Proxy,抛弃 Object.defineProperty?
+Object.defineProperty 只对单例属性做监听
+Object.defineProperty 只能劫持对象的属性,因此我们需要对每个对象的每个属性进行遍历。Vue 2.x 里,是通过 递归 + 遍历 data 对象来实现对数据的监控的,如果属性值也是对象那么需要深度遍历,显然如果能劫持一个完整的对象是才是更好的选择。
+
+11. es6新增基本数据类型   : Symbol( 生bo ) 表示独一无二的值
+
+12. 如何将伪数组转换为数组
+    伪数组 其实是个对象，所以装换的方法有 1. 遍历  2.ES6新增的数组方法Array.from，（let realArray =Array.from(arguments);）
+
+13. new 运算符 创建一个 空的javascript 对象
+  ```js
+  function Car(make, model, year) {
+    this.make = make;
+    this.model = model;
+    this.year = year;
+  }
+  const car1 = new Car('Eagle', 'Talon TSi', 1993);
+
+  console.log(car1) // { make: "Eagle", model: "Talon TSi" ,year: 1993}
+  ```
+
+14. 当js中的for循环遇到延时器或者定时器时需要注意的问题
+```js
+for(var i = 0;i<6;i++){
+  setTimeout(function(){
+    console.log(i); //此时输出为 6 个 6
+  },1000)
+}
+这主传进去要是因为setTimeout的执行时异步执行的，而for循环的执行却非常的快，
+所以，在1s后执行定时器函数时， i 已经 循环到了最大值6，其他的i值已经被销毁，
+此时再执行定时器，则是把 i=6传进去了，所以造成了这样的结果。 
+要想输出 0 1 2 3 4 5;可以用一个自定义函数包裹着延时器,把 i 传进去
+```
+
+15. 

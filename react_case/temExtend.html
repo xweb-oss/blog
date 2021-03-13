@@ -23,6 +23,24 @@ div {
 <p><b>Note:</b> This example does not work in Internet Explorer 9 and earlier versions.</p>
 
 <div></div>
+<script>
+for(var i=0;i<5;++i){
+  setTimeout(function(){
+    console.log(i+ ' ');
+  },100);
+}
+
+
+for (var j = 0; j < 10; j++) {
+  if(j == 5){
+    setTimeout(aa,2000);
+    function aa(){
+      console.log( "j="+j);
+    }
+  }
+}
+
+</script>
 
 </body>
 </html>

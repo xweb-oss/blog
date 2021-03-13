@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">  
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">    
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"> </script>  
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"> </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"> </script>
+    <title>Document</title>
+</head>
+<style>
+    html,body{
+      padding:0;
+      margin:0;
+    }
+    .swiper-container{
+      width:300px;
+      height:300px;
+      text-align: center;
+      margin: 100px auto 0;
+    }
+    .swiper-slide{
+      width:100%;
+       height:100%;
+    }
+.animated {
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes bounceIn {
+  0%{
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+ 50% {
+    -webkit-transform: scale3d(1.7, 1.7, 1.7);
+    transform: scale3d(1.7, 1.7, 1.7);
+  }
+  75% {
+    -webkit-transform: scale3d(1.4, 1.4, 1.4);
+    transform: scale3d(1.4, 1.4, 1.4);
+  }
+  90%{
+	  -webkit-transform: scale3d(1.6, 1.6, 1.6);
+    transform: scale3d(1.6, 1.6, 1.6);
+  }
+  100% {
+    -webkit-transform: scale3d(1.5, 1.5, 1.5);
+    transform: scale3d(1.5, 1.5, 1.5);
+  }
+}
+
+@keyframes bounceIn {
+  0%{
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+ 50% {
+    -webkit-transform: scale3d(1.7, 1.7, 1.7);
+    transform: scale3d(1.7, 1.7, 1.7);
+  }
+  75% {
+    -webkit-transform: scale3d(1.4, 1.4, 1.4);
+    transform: scale3d(1.4, 1.4, 1.4);
+  }
+  90%{
+	  -webkit-transform: scale3d(1.6, 1.6, 1.6);
+    transform: scale3d(1.6, 1.6, 1.6);
+  }
+  100% {
+    -webkit-transform: scale3d(1.5, 1.5, 1.5);
+    transform: scale3d(1.5, 1.5, 1.5);
+  }
+}
+
+@-webkit-keyframes bounceOut {
+  0% {
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    -webkit-transform: scale3d(1.5, 1.5, 1.5);
+    transform: scale3d(1.5, 1.5, 1.5);
+  }
+
+
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes bounceOut {
+  0% {
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    -webkit-transform: scale3d(1.5, 1.5, 1.5);
+    transform: scale3d(1.5, 1.5, 1.5);
+  }
+
+
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+.bounceIn {
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-name: bounceIn;
+  animation-name: bounceIn;
+  -webkit-transform-origin: center bounceIn;
+  transform-origin: center bounceIn;
+}
+.bounceOut {
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-name: bounceOut;
+  animation-name: bounceOut;
+  -webkit-transform-origin: center bounceOut;
+  transform-origin: center bounceOut;
+}
+</style>
+<body>
+    <div class="swiper-container animated">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide swiper-slide1"><img src="./images/cube1.png" alt width="100%"></div>
+            <div class="swiper-slide swiper-slide2"><img src="./images/cube2.png" alt width="100%"></div>
+            <div class="swiper-slide swiper-slide3"><img src="./images/cube3.png" alt width="100%"></div>
+        </div>
+    </div>
+  <script>
+    var mySwiper = new Swiper('.swiper-container', {
+       autoplay: true,//可选选项，自动滑动
+       loop: true, // 循环模式选项
+       effect : 'cube',
+        cubeEffect: {
+            slideShadows: true,
+            shadow: false, // true 开启投影
+            shadowOffset: 100,
+            shadowScale: 0.6
+        },
+    });
+  
+    setInterval(play,8000);
+    function play(){
+        $(".swiper-container").removeClass('bounceOut').addClass('bounceIn');
+        setTimeout(function(){mySwiper.slideNext();},800)
+        setTimeout(function(){$(".swiper-container").removeClass('bounceIn').addClass('bounceOut')},1400);
+    }
+  </script>
+</body>
+</html>

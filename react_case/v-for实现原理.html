@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v for</title>
+</head>
+<body>
+   <div class="app">
+     <div class="elaboration">都是获取document对象的文本内容的</div>
+     <div>
+        <p>innerHTML 从对象的起始位置到终止位置的全部内容,包括Html标签。</p>
+        <p>innerText 从起始位置到终止位置的内容,但它去除Html标签。</p>
+     </div>
+     <ul id="list">
+         <!-- <li>
+             <div class="hd">张三的基本信息</div>
+             <div class="db">
+                <p>姓名:张三</p>
+                <p>年龄:19</p>
+                <p>性别:男</p>
+             </div>
+         </li>
+         <li>
+             <div class="hd">张三的基本信息</div>
+             <div class="db">
+                <p>姓名:张三</p>
+                <p>年龄:19</p>
+                <p>性别:男</p>
+             </div>
+         </li> -->
+     </ul>
+   </div>
+
+    <script>
+     var arr =[
+        { name:'张三',sex:'男',age:19 },
+        { name:'李四',sex:'男',age:15 },
+        { name:'王五',sex:'男',age:16 },
+     ]
+    var List = document.getElementById('list')
+
+    //   1.纯 dom 非常笨拙 没有实战价值
+    // for(var i = 0;i < arr.length;i++){
+    //   var OLI = document.createElement('li'); // 创建所需的标签 li
+    //   var hdDiv = document.createElement('div');
+    //   hdDiv.className = 'hd'                   // 给创建标签设置 class name
+    //   hdDiv.innerText = arr[i].name + '的基本信息'  // 赋值
+    //   OLI.appendChild(hdDiv)                   // 放入树节点中
+
+    //   var dbDiv = document.createElement('div');
+    //   dbDiv.className = 'db'
+    //   // 创建三个p 
+    //   var p1 = document.createElement('p')
+    //   var p2 = document.createElement('p')
+    //   var p3 = document.createElement('p')
+    //   p1.innerText = '姓名:' + arr[i].name 
+    //   p2.innerText = '年龄:' + arr[i].age 
+    //   p3.innerText = '性别:' + arr[i].sex
+    //   dbDiv.appendChild(p1)
+    //   dbDiv.appendChild(p2)
+    //   dbDiv.appendChild(p3)
+    //   OLI.appendChild(dbDiv)
+
+    //   // 把创建的节点 渲染到树节点上
+    //   List.appendChild(OLI);
+    // }
+
+
+    // 2. 数组join 方法 
+    // for(var i = 0;i < arr.length;i++){
+    //     List.innerHTML += [
+    //         '<li>',
+    //         '   <div class="hd">' + arr[i].name + '的基本信息</div>',
+    //         '   <div class="db">',
+    //         '     <p>姓名:'+ arr[i].name +'</p>',
+    //         '     <p>年龄:'+ arr[i].age +'</p>',
+    //         '     <p>性别:'+ arr[i].sex +'</p>',
+    //         '   </div>',
+    //         '</li>',
+    //     ].join('');
+    // }
+
+    // 3. es6 的反引号法
+    for(var i = 0;i < arr.length;i++){
+        List.innerHTML +=
+        `<li>
+            <div class="hd">${ arr[i].name }的基本信息</div>
+            <div class="db">
+                <p>姓名: ${ arr[i].name }</p>
+                <p>年龄: ${ arr[i].age }</p>
+                <p>性别: ${ arr[i].sex }</p>
+            </div>
+        </li>`
+    }
+
+    // 4. 模板引擎
+    </script>
+</body>
+</html>
