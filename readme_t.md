@@ -188,14 +188,95 @@ get 后退不受影响，post 后退会重新请求
 5. 虚拟DOM 
    就是由 vue 组件树建立起来的整个 Vnode 树的一种叫法 （vnode 节点）,就是用js对象记录一个 dom 节点的副本,当dom 发生更改的时候，先用虚拟dom 进行diff, 算出最小的差异，然后在修改真实的dom,提高性能
 
+
+* 尚硅谷
+
 5-1. diff算法是一种通过'同层的树节点' 进行比较的高效算法,避免了对树进行逐层搜索遍历
 
 5-2. 真正的,彻底的弄懂虚拟 DOM 和 diff 算法
 * diff
 就是新虚拟DOM 和 老虚拟DOM 进行精细化比对,实现最小量的更新，最后反应到真正的 dom 上。
+条件：1.'key 代表唯一性',2. 选择器(标签)要相同(代表的相同的节点) 3. 只会同层比较
 
 * 虚拟DOM
-用javaScript对象描述DOM 的层次结构。DOM中的一切属性都在虚拟dom中有对应的属性。
+**** 用 javaScript对象 描述DOM的层次结构 ****
+DOM中的一切属性都在虚拟dom中有对应的属性。
+
+虚拟节点有哪些属性:
+```js
+{
+  children:undefined // (子元素)
+  data:{}  
+  elm:undefined   // undefined表示虚拟dom还没有上树
+  key:undefined
+  sel:'div',
+  text:'我的一个盒子'
+}
+```
+
+h函数：产生虚拟节点的
+```js
+h('a',{ props:{ href:'https://www.baidu.com'}},'尚硅谷')
+```
+
+
+
+
+5-3. 数据响应式原理
+1. mvvm 模式 ： 数据变化，视图会自动变化
+
+```js
+Object.defineProperty()可以设置一些隐藏的属性
+(enumerable 是否被枚举,也就是这个对象能不能被循环出来)
+(writable 是否可写)
+
+var obj ={ }
+// 第一个参数代表哪一个对象, obj
+// 第二个参数代表属性， a
+// 第三个是给属性赋值。 { }
+Object.defineProperty(obj,'a',{
+  value:3,
+  // 是否可写
+  writable:true   // 默认是false 不可写
+})
+console.log(obj.a++) // 输出4 
+ 
+ 2. Object.defineProperty中会有一个 get 和 set 函数
+ Object.defineProperty(obj,'b',{
+   get(){
+     console.log('视图访问了b属性');
+   },
+   set(){
+     console.log('视图改变了b属性');
+   }
+ })
+obj.b++;  // 触发set函数 
+ 
+
+defineReactiove 函数
+
+function defineReactiove(data,key,val){
+  Object.defineProperty(data,key){
+    get(){
+      return val
+    },
+    set(newVal){
+      if(val == newVal){
+        return;
+      }
+      val = newVal
+    }
+  }
+}
+
+```
+
+
+
+
+
+
+
 
 
 

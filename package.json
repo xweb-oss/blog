@@ -20,5 +20,8 @@
     "vuepress": "^1.0.0",
     "vuepress-plugin-reading-progress": "^1.0.7",
     "vuepress-plugin-smooth-scroll": "^0.0.3"
+  },
+  "dependencies": {
+    "snabbdom": "^2.1.0"
   }
 }
