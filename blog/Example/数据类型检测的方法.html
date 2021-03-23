@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数据类型检测的方法</title>
+</head>
+<style>
+ 
+</style>
+<body>
+  <div>
+    <p>instanceof 返回布尔值; <span style="color:red">缺点:不能检测出基本类型，且不能跨iframe</span></p>
+    <p>typeof 返回数据类型; <span style="color:red">缺点:只能检测出基本类型（除null）</span></p>
+    <p>constructor 返回布尔值; <span style="color:red">缺点:constructor易被修改，也不能跨iframe</span></p>
+    <p>Object.prototype.toString.call 返回具体类型; <span style="color:red">缺点:IE6下，undefined和null均为Object</span></p>
+  </div>
+  <script>
+    var arr = ['json','make','lili']
+    var str = 'json'
+    console.log(arr instanceof Array)  // true
+    console.log(arr instanceof Object)  // true
+    console.log(str instanceof String)  // false
+    
+    console.log(typeof arr) // object
+    console.log(typeof str) // string
+
+   // 需要注意到的是：使用constructor是不保险的，因为constructor属性是可以被修改的，会导致检测出的结果不正确  而且   undefined和null是不能够判断出类型的，并且会报错。
+    console.log(arr.constructor == Object)  // false
+    console.log(arr.constructor == Array)  // true
+    console.log(str.constructor == String)  // true
+
+    console.log(Object.prototype.toString.call(str));//[object String]
+    console.log(Object.prototype.toString.call(str) == '[object String]');// true
+    console.log(Object.prototype.toString.call(arr));//[object Array]
+  
+   // Object.prototype.toString.call方法封装
+   function checkFun(){
+    var types = function (o){
+      var s = Object.prototype.toString.call(o);
+      return s.match(/\[object (.*?)\]/)[1].toLowerCase();
+    };
+    let allTypes = ['Null','Undefined','Object','Array','String','Number','Boolean','Function','RegExp']
+    allTypes.forEach(function (t) {
+      types['is' + t] = function (o) {
+        return types(o) === t.toLowerCase();
+      };
+    });
+    return types
+    // types.isObject({}) // true
+    // types.isNumber(NaN) // true
+    // types.isRegExp(/abc/) // true
+   }
+   console.log(checkFun().isObject({}))
+  </script>
+</body>
+</html>

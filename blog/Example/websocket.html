@@ -91,5 +91,35 @@
      * 3. 为什么WebSocket连接可以实现全双工通信而HTTP连接不行呢？
         实际上HTTP协议是建立在TCP协议之上的，TCP协议本身就实现了全双工通信，但是HTTP协议的请求－应答机制限制了全双工通信
     */
+
+    // initWebSocket(){
+    //      if(typeof(WebSocket) === "undefined"){
+    //        alert("您的浏览器不支持WebSocket")
+    //        return false
+    //      }else{
+    //         this.websock = new WebSocket(this.wsuri)
+    //         this.websock.onopen = this.websocketonopen
+    //         this.websock.onmessage = this.websocketonmessage
+    //         this.websock.onerror = this.websocketonerror
+    //         this.websock.onclose = this.websocketclose
+    //      }
+    //   },
+    //    //连接成功
+	//    websocketonopen(){ 
+	//       console.log('WebSocket连接成功')
+	//    },
+	//     //接收后端返回的数据
+	//    websocketonmessage(e){
+    //         console.log(e)
+	//     }
+	//     //连接建立失败重连
+	//    websocketonerror(e){
+	//       console.log(`连接失败的信息：`, e)
+	//       this.initWebSocket() // 连接失败后尝试重新连接
+	//     },
+	//     //关闭连接
+	//    websocketclose(e){ 
+	//       console.log('断开连接',e)
+	//    },
 </script>
 </html>

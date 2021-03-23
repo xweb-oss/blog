@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>测试</title>
+</head>
+<body>
+  <div id="app">
+
+  </div>
+  <script>
+    // 根据code相同去重  filter【返回满足条件的数组】  
+    var selectionType = [ {index:1,code:'ara'},{index:2,code:'aar'},{index:3,code:'bb'},{index:4,code:'aaw'},{index:5,code:'cc'}]
+    var newarrname=[];
+    selectionType = selectionType.filter(res=>{ 
+      if(!newarrname.includes(res.code)){ // includes 【 返回一个布尔值 】 不修改原数组
+        newarrname.push(res.code);
+        return res
+      }
+    })
+  
+  // includes 【 返回一个布尔值 】 不修改原数组
+   let ins = [45,1,3,12,34]
+   let s = ins.includes(34) // true 对单个数据操作 不存在遍历
+
+   // find 使用 【 返回满足的那一项 】 不修改原数组;
+   var list = [ {index:1,code:'ara'},{index:2,code:'aar'},{index:2,code:'bb'},{index:2,code:'ddd'}]
+   let one = list.find((item,index,array)=>{ return item.index == 2 })
+   console.log(one) // {index: 2, code: "aar"} 只会找到满足条件的第一个
+
+   // every 【 返回一个布尔值 】 不修改原数组; 
+  let e = [9,8,17,15,9].every((item,index,array)=>{ return item > 10;})
+  console.log(e); // false 全部为满足条件才会返回true      
+
+  // some 【 返回一个布尔值 】 不修改原数组
+  var arr = [ {index:1,code:'ara'},{index:2,code:'aar'},{index:2,code:'bb'},{index:2,code:'ddd'}]
+  let tow = arr.some((item,index,array)=>{ return item.index >1 })
+  console.log(tow) // true 找到了就不会在往下执行
+  
+  // indexOf 【 返回数组的下标 】 没有返回 -1 对单个数据操作 不存在遍历
+  var cc = [ 4,5,6]
+  let ss = cc.indexOf(6)
+  console.log(ss) // 2  
+
+ // Array.from()  将对象转换成数组  
+ let arrayLike = {'0': 'a','1': 'b','2': 'c',length: 3};
+ let arr2 = Array.from(arrayLike); // ['a', 'b', 'c']
+ // 注意：可以接受第二个参数相当于map方法
+ var like = [ {index:1,code:'ara'},{index:2,code:'aar'},{index:2,code:'bb'},{index:2,code:'ddd'}]
+//  Array.from(like,({...item})=>(item.code)) 或
+ let arr3 = Array.from(like,({code})=>code); // ['ara', 'aar', 'bb','ddd']
+// arr3  不使用Array.from 的方法
+let arr4 = like.map(ele=>{ return ele.code }) // ['ara', 'aar', 'bb','ddd']
+
+
+  </script>
+</body>
+</html>
