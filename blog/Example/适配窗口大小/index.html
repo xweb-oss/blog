@@ -3,20 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>适配窗口大小</title>
+  <!-- 移动 字体大小 rem 设置    二个可以通用，只是改下里面数字-->
+  <script src="./rem.js"></script>
+
+  <!-- pc 字体大小 rem 设置 -->
+  <!-- <script src="./rem2.js"></script> -->
 </head>
 <body>
   <style>
-    #outer {
-      color: blue;
-    }
-    .inner{
-      color: #000;
-      font-weight: 800;
-    }
+    body{ margin: 0;padding: 0;width:100%;height:100%;}
+    html{ width:100%;height:auto;}
+    /* 移动最大宽度的设置 */
+    #outer { color: blue; max-width:750px;margin:0 auto; }  
+    /* #outer { color: blue;} */
+    .inner{ color: #000; font-size:2rem;}
   </style>
   <div class="outer" id="outer">
     <div class="inner">test</div>
+    <div class="anthor">
+      注意:pc端一般用百分百,不用rem .
+      <p>原因:1.兼容问题</p>
+      <p>2.，rem作为单位需要进行简单的计算的</p>
+    </div>
     <div class="life">
       beforeMount() 虚拟dom已创建完成，在数据渲染前最后一次更改数据
       mounted() 页面、数据渲染完成，真实dom挂载完成
