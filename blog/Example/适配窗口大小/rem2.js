@@ -19,3 +19,26 @@
     win.addEventListener(resizeEvt, recalc, false);
     doc.addEventListener('DOMContentLoaded', recalc, false);
   })(document, window);
+
+
+
+//   (function (doc, win) {
+//     // 分辨率Resolution适配
+//     let docEl = doc.documentElement,
+//         resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+//         recalc = function () {
+//             let htmlWidth = document.documentElement.clientWidth || document.body.clientWidth;
+//             let htmlDom = document.getElementsByTagName('html')[0];
+//             if(htmlWidth<=750){
+//                 htmlDom.style.fontSize= htmlWidth/3.75+ 'px';
+//             }else {
+//                 htmlDom.style.fontSize = 100 + 'px';
+//             }
+//         };
+
+//     // Abort if browser does not support addEventListener
+//     if (!doc.addEventListener) return;
+//     win.addEventListener(resizeEvt, recalc, false);
+//     win.addEventListener('pageshow', recalc, false);
+//     doc.addEventListener('DOMContentLoaded', recalc, false);
+// })(document, window);

@@ -37,7 +37,10 @@
         }
     },
     methods:{
-
+       getPgeTitle(){
+        document.title = to.meta.title?to.meta.title:document.title
+        if(to.meta.content) document.querySelector('meta[name="description"]').setAttribute('content', to.meta.content)
+       }
     }
 })
 

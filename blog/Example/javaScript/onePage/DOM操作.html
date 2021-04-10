@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM操作</title>
+</head>
+<style>
+.container {
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial;
+}
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  cursor: pointer;
+  font-size: 16px;    
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+}
+
+.container a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+.show {
+  display: block;
+}
+</style>
+<body>
+  <div class="container">
+    <div class="dropdown">
+      <button class="dropbtn" onclick="myFunction()">下拉菜单</button>
+      <div class="dropdown-content" id="myDropdown">
+        <a href="https://www.baidu.com">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+      </div>
+    </div> 
+  </div>
+  <h3 class="intro">导航栏中的下拉菜单</h3>
+  <div id="parents">
+    <p id="menu">点击按钮显示下拉菜单(点我查看冒泡和捕获)</p>
+  </div>
+</body>
+<script>
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+// 点击下拉菜单意外区域隐藏
+window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+    var myDropdown = document.getElementById("myDropdown");
+    if (myDropdown.classList.contains('show')) { // contains 返回布尔值，判断指定的类名是否存在。
+      myDropdown.classList.remove('show'); // 使用 classList API 移除类值
+    } 
+  }
+}
+
+let x = document.getElementsByClassName('intro')[0]
+let y = document.getElementById('menu')
+let z = document.getElementById('myDropdown')
+let o = z.getElementsByTagName('a')  // 在z中查找所有的 a
+
+// getElementsByTagName 和 getElementsByClassName 这两个方法查找多个 dom 元素，返回的是 htmlcollection 类型，是伪数组而不是真数组，故不能使用数组的方法。我们可以使用数组原型配合 slice 方法，利用 call，apply，bind 方法将伪数组转为真数组。
+
+console.log(o) // 在控制台我们可以看到原型_proto_为htmlcollection，是伪数组
+console.log(Array.prototype.slice.call(o)) //在控制台我们可以看到原型_proto_为Array(0)，是真数组
+
+console.log(x.innerHTML)  // 改变dom的内容
+console.log(y.innerText)
+
+console.log(o[0].href ='http://www.guge.com') // 改变属性
+
+console.log(y.style.color = '#0f0') // 改变样式
+
+// 事件传递有两种方式：冒泡与捕获。
+
+// 1. 在 冒泡 中，内部元素的事件会先被触发，然后再触发外部元素，即： <p> 元素的点击事件先触发，然后会触发 <div> 元素的点击事件。
+
+// 2. 在 捕获 中，外部元素的事件会先被触发，然后才会触发内部元素的事件，即： <div> 元素的点击事件先触发 ，然后再触发 <p> 元素的点击事件。
+
+// addEventListener() 方法可以指定 "useCapture" 参数来设置传递类型： 默认值为 false, 即冒泡传递，当值为 true 时, 事件使用捕获传递。
+document.getElementById("parents").addEventListener("click", 
+function() {
+    alert("我是 id='menu' 的父元素");
+}, true);  // 捕获 为true  冒泡  false 为默认
+document.getElementById("menu").addEventListener("click", function(){
+    alert("我是 id='menu' 的自己，我是捕获");
+}, true);
+// document.getElementById("menu").addEventListener("click", function(){
+//     alert("我是 id='menu' 的自己，我是冒泡");
+// }, false);
+
+
+
+
+
+</script>
+</html>
