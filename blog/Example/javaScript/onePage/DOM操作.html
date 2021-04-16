@@ -88,7 +88,9 @@ let y = document.getElementById('menu')
 let z = document.getElementById('myDropdown')
 let o = z.getElementsByTagName('a')  // 在z中查找所有的 a
 
-// getElementsByTagName 和 getElementsByClassName 这两个方法查找多个 dom 元素，返回的是 htmlcollection 类型，是伪数组而不是真数组，故不能使用数组的方法。我们可以使用数组原型配合 slice 方法，利用 call，apply，bind 方法将伪数组转为真数组。
+// getElementsByTagName 和 getElementsByClassName 这两个方法查找多个 dom 元素，返回的是 htmlcollection 类型，是伪数组而不是真数组，故不能使用数组的方法。
+
+// 我们可以使用数组原型配合 slice 方法，利用 call，apply，bind 方法将伪数组转为真数组。
 
 console.log(o) // 在控制台我们可以看到原型_proto_为htmlcollection，是伪数组
 console.log(Array.prototype.slice.call(o)) //在控制台我们可以看到原型_proto_为Array(0)，是真数组
