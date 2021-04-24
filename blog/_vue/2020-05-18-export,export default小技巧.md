@@ -27,3 +27,24 @@ export default service
 import request, { createServe } from '@/plugins'
 const LiveServe = createServe(process.env.VUE_APP_LIVE_API)
 ```
+
+
+
+// 回到顶部方法
+```js
+export function scrollToptimer(){
+  let scrollToptimer = null
+  scrollToptimer = setInterval(()=> {
+    var top = document.body.scrollTop || document.getElementById("app").scrollTop;
+    var speed = top / 4;
+    if (document.body.scrollTop!=0) {
+        document.body.scrollTop -= speed;
+    }else {
+        document.getElementById("app").scrollTop -= speed;
+    }
+    if (top == 0) {
+      clearInterval(scrollToptimer);
+    }
+  }, 30); 
+}
+```
