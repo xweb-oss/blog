@@ -46,3 +46,55 @@
 
 </script>
 </html>
+
+<!-- <script>      vue3.0  写法
+import { reactive, onMounted, toRefs } from 'vue'
+import md5 from 'js-md5'
+import { getUserInfo, EditUserInfo, logout } from '@/service/user'
+import { setLocal } from '@/common/js/utils'
+import { Toast } from 'vant'
+export default {
+  setup() {
+    const state = reactive({  // state 
+      nickName: '',
+      introduceSign: '',
+      password: ''
+    })
+
+    onMounted(async () => {   // 初始化
+      const { data } = await getUserInfo()
+      state.nickName = data.nickName
+      state.introduceSign = data.introduceSign
+    })
+
+
+    const save = async () => {  // 绑定得事件
+      const params = {
+        introduceSign: state.introduceSign,
+        nickName: state.nickName
+      }
+      if (state.password) {
+        params.passwordMd5 = md5(state.password)
+      } 
+      await EditUserInfo(params)
+      Toast.success('保存成功')
+    }
+
+
+    const handleLogout = async () => {  // 绑定得事件
+      const { resultCode } = await logout()
+      if (resultCode == 200) {
+        setLocal('token', '')
+        window.location.href = '/home'
+      }
+    }
+
+
+    return {
+      ...toRefs(state),
+      save,
+      handleLogout
+    }
+  }
+}
+</script> -->
