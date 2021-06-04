@@ -6,7 +6,7 @@ author: xweb
 location: Alanbang
 ---
 
-### 回到顶部方法
+### 回到顶部方法 -- 由慢变快方法
 ```js
 export function scrollToptimer(){
   let scrollToptimer = null
@@ -25,41 +25,6 @@ export function scrollToptimer(){
 }
 ```
 
-### 调用app方法
-```js
-emitAppMethods(methodsName,parmars){
-  if (/android/i.test(navigator.userAgent)){
-    try{
-      switch(methodsName){
-        case 'JS_APP_GoBack':
-        window.android.JS_APP_GoBack()    // JS_APP_GoBack app定义得方法
-        break;
-        case 'JS_APP_HOME':
-        window.android.JS_APP_HOME()   // JS_APP_HOME app定义得方法
-        break;
-        case 'JS_APP_BUY':
-        window.android.JS_APP_BUY()
-        break;
-      }
-  }
-  catch(err){
-    console.log(err)
-  }
-} else if (/ipad|iphone|iPod|iOS|mac/i.test(navigator.userAgent)){
-    let message ={
-      'method' : methodsName,
-      'param' : parmars,
-    }
-    try{
-      window.webkit.messageHandlers.jsOpenSwiftFunc.postMessage(message);
-    }
-    catch(err){
-      console.log(err)
-    }
-  }
-},
-```
-
 ### 手控密码眼睛
   ` 声明 flag  data(){ return { flag:true }}`
 ```html
@@ -70,22 +35,14 @@ emitAppMethods(methodsName,parmars){
 ```
 
 ### 全局定义组件 写法
-在main.js 中 引入  
+* 在main.js 中 引入  
 ```js
 import plugin from './utils/vantComponents'
 Vue.use(plugin)   
 ```
-
+* vantComponents.js 文件
 ```js
-// vantComponents.js
-import { 
-  Button,
-  Image as VanImage,
-  Tabbar, 
-  TabbarItem,
-  NavBar 
-} from 'vant';
-
+import { Button,Image as VanImage,Tabbar, TabbarItem,NavBar } from 'vant';
 function plugin(Vue) {
   if (plugin.installed) {
     return
@@ -96,7 +53,6 @@ function plugin(Vue) {
   Vue.use(TabbarItem);
   Vue.use(NavBar);
 }
-
 export default plugin
 ```
 
@@ -108,4 +64,34 @@ export default plugin
   let appid = 'dddd'
   let sessionid = 'sssss'
 	let url = _protocol + "www.suibian.live/did/js/dp.js?appId=" + appid + "&sessionId=" + sessionid + "&ts=" + ts + "&callback=isOK";
+```
+
+7. ### 移动端解决点击 0.3s延迟的问题（使用 在index.html中引入）
+<!-- ```js -->
+<script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
+<script>
+  if('addEventListener' in document){
+    document.addEventListener('DOMContentLoaded',function(){
+      FastClick.attach(document.body);
+    },false)
+  }
+  if(!window.promise){
+    document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.js"></script>')
+  }
+</script>
+<!-- ``` -->
+
+
+```js
+// 复制文本
+export const copy = function(ele) { // ele = document.createElement('div');
+  if (!ele) return
+  window.getSelection().removeAllRanges()
+  const range = document.createRange()
+  range.selectNode(ele)
+  window.getSelection().addRange(range)
+  document.execCommand('copy')
+  window.getSelection().removeAllRanges()
+  return true
+}
 ```
