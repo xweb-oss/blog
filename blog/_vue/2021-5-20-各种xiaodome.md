@@ -95,3 +95,13 @@ export const copy = function(ele) { // ele = document.createElement('div');
   return true
 }
 ```
+
+
+### 錨點跳
+```js
+ 點  btn 跳 到  <li id="test"></li>
+  // document.getElementById('test').scrollIntoView({ behavior:'smooth' })
+ document.querySelector('#test').scrollIntoView({
+  behavior:'smooth'  // 匀速
+});
+```

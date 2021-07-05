@@ -50,6 +50,15 @@ a . width:0;height:0;border-width:10px;border-style:solid;
 border-color：transparent #0099CC transparent transparent;
 把border 三面设置 透明，一面给颜色
 
+b.  width: 7px;
+  height: 8px;
+  border-top: 7px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 8px solid #13aef8;
+
+
+
 7. 清除浮动的几种方式，及原理？
 a. 父级 加一个 height;
 b. 父级 加一个 ovevflow:hiddle
@@ -60,13 +69,13 @@ c. ::after / <br> / clear: both
 * js 区域
 
 1. 写一个 1到100求和
- 
 function total(a,b){
   var sum = 0;
   for(var i = a;i <= b;i++){
       sum += i
   }
 }
+
 
 2. 页面渲染html的过程？ （自己理解）     ** 深入了解 **
 主要 五个方面:
@@ -149,6 +158,23 @@ import aaaa
 8. 说一下自己常用的es6的功能？
 let const var 解构赋值 promise Module
  class  ...等等
+
+
+h5 新特性：
+  * 语义标签    <header>  <footer> <nav>   <main>
+  * 增强型表单
+  * 视频和音频
+  * Canvas绘图
+  * SVG绘图    SVG指可伸缩矢量图形
+  * 地理定位
+  * 拖放API.
+  * WebWorker.  Web Worker可以通过加载一个脚本文件，进而创建一个独立工作的线程，在主线程之外运行。
+  基本使用：
+     Web Worker的基本原理就是在当前javascript的主线程中，使用Worker类加载一个javascript文件来开辟一个新的线程，
+    起到互不阻塞执行的效果，并且提供主线程和新县城之间数据交换的接口：postMessage、onmessage。
+
+javascript:
+
 
 9. 什么是回话cookie 什么是持久cookie? 
 cookie是服务器返回的，指定了expire time(有效期)的是持久cookie,反之是会话cookie
