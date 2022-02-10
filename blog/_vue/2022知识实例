@@ -1,3 +1,6 @@
+
+### hasOwnProperty 使用
+```md
 1.。Object对象原型上的hasOwnProperty()用来判断一个属性是定义在对象本身而不是继承自原型链 
 第一方法：（不完善）
    var o = new object();
@@ -19,3 +22,92 @@ foo.hasOwnProperty('bar')     // 就会一直返回  false    所以使用第二
 第二方法：（建议使用）
     ({}).hasOwnProperty.call(foo,'bar')   // true  或 
     Object.prototype.hasOwnProperty.call(foo,'bar')   // true
+    
+```
+
+### 万能 ----- 对象对比方法
+```js
+/**
+ * 类型检测
+ * @returns {String} 数据类型的字符串
+ */
+export const typeCheck = data => {
+    return Object.prototype.toString.call(data).slice(8, -1)
+}
+/**
+ * 对比数据
+ * @param {Object} newData 新数据对象
+ * @param {Object} oldData 旧数据对象
+ * @param {Array} excludeParams 排除对比的属性名数组
+ * @returns {Boolean} 是否有发生变化
+ */
+export const objectComparison = (newData, oldData, excludeParams = []) => {
+    // 先判断是否是数组
+    if (typeCheck(newData) === 'Array') {
+        // 先判断长度, 长度一样才对比
+        return oldData && (newData.length !== oldData.length || newData.some((item, i) => objectComparison(newData[i], oldData[i] || {}, excludeParams)))
+    }
+    // 否则为对象
+    return Object.keys(newData).some(key => {
+        // 如果是排除项则不进行对比
+        if (!excludeParams.some(it => it === key)) {
+            let newValue = newData[key]
+            let oldValue = oldData[key]
+            let type = typeCheck(newValue)
+            // console.log('key: ', key, '   newValue: ', newValue, '    oldValue: ', oldValue)
+            if (type === 'Array') {
+                return oldValue && (newValue.length !== oldValue.length || newValue.some((item, i) => objectComparison(newValue[i], oldValue[i] || {}, excludeParams)))
+            } else if (type === 'Object') {
+                return objectComparison(newValue, oldValue, excludeParams)
+            } else {
+                // 新旧值不等则返回true (错误信息不进行对比)
+                // (新值对应的旧值可能是 空字符串或数字或null或undefined, 用!== 会非常麻烦, 所以使用!=进行隐式类型转换对比)
+                return key.indexOf('Error') === -1 && (newValue || '') != (oldValue || '')  // eslint-disable-line
+            }
+        }
+    })
+}
+/**
+ * 去除前后空格
+ */
+export const __trim = (str, obj) => {
+    if (obj) {
+        obj[str] = obj[str] && obj[str].trim() || ''
+        return
+    }
+    if (!str) {
+        return ''
+    } else {
+        return `${str}`.replace(/(^\s*)|(\s*$)/g, '')
+    }
+}
+```
+```js
+/**
+ * 将时间戳转换为yyyy-mm-dd hh:mm:ss+4位时区格式
+ * @param {Date} datetime 当前时间的时间戳
+ * @param {String} format 要转化的时间格式，如果为'simple',则返回类似'20180930'这种格式
+ * @returns 字符串形式的时间
+ */
+export const __dateFormat = (fmt, date = new Date()) => {
+    var obj = {
+        'M+': date.getMonth() + 1, // 月份
+        'd+': date.getDate(), // 日
+        'h+': date.getHours(), // 小时
+        'm+': date.getMinutes(), // 分
+        's+': date.getSeconds(), // 秒
+        'q+': Math.floor((date.getMonth() + 3) / 3), // 季度
+        'S': date.getMilliseconds() // 毫秒
+    }
+    if (/(y+)/.test(fmt)) {
+        fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length))
+    }
+    for (var k in obj) {
+        if (new RegExp('(' + k + ')').test(fmt)) { fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (obj[k]) : (('00' + obj[k]).substr(('' + obj[k]).length))) }
+    }
+    return fmt
+}
+
+
+使用   引入后         __dateFormat('yyyy-MM-dd', new Date(val))
+```
