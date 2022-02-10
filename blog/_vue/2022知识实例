@@ -1,0 +1,21 @@
+1.。Object对象原型上的hasOwnProperty()用来判断一个属性是定义在对象本身而不是继承自原型链 
+第一方法：（不完善）
+   var o = new object();
+   o.name="wanglie"
+   o.hasOwnProperty('name')    //  true
+   o.hasOwnProperty('sex')    //  false
+
+当 ‘hasOwnProperty’ 作为属性名得时候  使用这种方法就不完善
+
+var  foo = {
+       hasOwnProperty(){
+                 return false 
+        },
+        bar:'here a bar'
+}
+
+foo.hasOwnProperty('bar')     // 就会一直返回  false    所以使用第二种方法比较全面。
+
+第二方法：（建议使用）
+    ({}).hasOwnProperty.call(foo,'bar')   // true  或 
+    Object.prototype.hasOwnProperty.call(foo,'bar')   // true
